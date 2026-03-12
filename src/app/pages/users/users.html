@@ -1,0 +1,36 @@
+<h2>Usuários</h2>
+
+<mat-form-field appearance="outline" class="search-field">
+  <mat-label>Buscar usuário</mat-label>
+  <input
+    matInput
+    (keyup)="searchUsers($event)"
+    placeholder="Digite um nome">
+</mat-form-field>
+
+
+<div class="users-container">
+
+  <mat-card *ngFor="let user of filteredUsers" class="user-card">
+
+    <mat-card-title>
+      {{user.name}}
+    </mat-card-title>
+
+    <mat-card-content>
+
+      <p>
+        <strong>Email:</strong>
+        {{user.email}}
+      </p>
+
+      <p>
+        <strong>Empresa:</strong>
+        {{user.company.name}}
+      </p>
+
+    </mat-card-content>
+
+  </mat-card>
+
+</div>

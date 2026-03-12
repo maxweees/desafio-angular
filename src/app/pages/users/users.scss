@@ -1,0 +1,25 @@
+h2{
+    text-align:center;
+    margin-top:20px;
+  }
+  
+  .search-field{
+    width:400px;
+    display:block;
+    margin:20px auto;
+  }
+  
+  .users-container{
+  
+    max-width:900px;
+    margin:auto;
+  
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  
+  }
+  
+  .user-card{
+    padding:10px;
+  }

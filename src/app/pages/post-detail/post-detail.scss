@@ -1,0 +1,30 @@
+.detail-container {
+
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+  
+  }
+  
+  .post-card {
+  
+    max-width: 700px;
+    width: 100%;
+    padding: 10px;
+  
+  }
+  
+  .post-body {
+  
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 10px;
+  
+  }
+  
+  mat-card-actions {
+  
+    display: flex;
+    justify-content: flex-end;
+  
+  }
