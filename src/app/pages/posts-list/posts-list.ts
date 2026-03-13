@@ -6,6 +6,9 @@ import { RouterLink, RouterModule } from '@angular/router';
 import { UserService } from '../../services/user';
 import { MatButtonModule } from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-posts-list',
@@ -14,7 +17,10 @@ import {MatCardModule} from '@angular/material/card'
             RouterModule,
             MatButtonModule,
             RouterLink,
-            MatCardModule],
+            MatCardModule,
+            MatFormFieldModule,
+            MatInputModule,
+            FormsModule],
   templateUrl: './posts-list.html',
   styleUrl: './posts-list.scss',
 })
@@ -22,6 +28,9 @@ export class PostsList implements OnInit{
 
   posts: any[] = []
   loading = true
+
+  searchTerm = ''
+  filteredPosts: any[] = []
 
   constructor(private postService: PostService,
               private userService: UserService
@@ -41,5 +50,14 @@ export class PostsList implements OnInit{
         })
       })
     })
+  }
+  filterPosts(){
+
+    const term = this.searchTerm.toLowerCase()
+
+    this.filteredPosts = this.posts.filter(post =>
+      post.title.toLowerCase().includes(term)
+    )
+
   }
 }

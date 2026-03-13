@@ -1,4 +1,15 @@
+<mat-form-field appearance="outline" class="search-field">
 
+  <mat-label>Buscar post</mat-label>
+
+  <input
+    matInput
+    placeholder="Digite o título..."
+    [(ngModel)]="searchTerm"
+    (input)="filterPosts()"
+  >
+
+</mat-form-field>
 
 <div class="posts-grid">
 
@@ -6,7 +17,7 @@
     Carregando...
   </div>
   
-  <mat-card *ngFor="let post of posts | slice:0:20" class="post-card">
+  <mat-card *ngFor="let post of filteredPosts | slice:0:20" class="post-card">
   
   
       <mat-card-title>
