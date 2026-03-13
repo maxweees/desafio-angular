@@ -1,6 +1,7 @@
 # Desafio Angular
 
-Projeto desenvolvido em Angular que consome uma API pública para exibir posts e usuários.
+Projeto desenvolvido como desafio técnico utilizando Angular e Angular Material.  
+A aplicação consome a API pública JSONPlaceholder para exibir posts e usuários.
 
 ## Funcionalidades
 
