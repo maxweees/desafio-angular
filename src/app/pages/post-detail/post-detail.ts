@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule, MatDivider } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 
 @Component({
@@ -20,8 +21,10 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [CommonModule,
     MatCardModule,
     MatIconModule,
-    MatButtonModule,
-    MatButtonModule, MatDivider],
+    MatButtonModule, 
+    MatDivider,
+    MatProgressSpinnerModule,
+   ],
   templateUrl: './post-detail.html',
   styleUrl: './post-detail.scss',
 })
@@ -44,7 +47,7 @@ export class PostDetail implements OnInit{
       const id = Number(params['id'])
 
       this.postService.getPost(id).subscribe(post => {  this.post = post
-            this.loading = false
+        this.loading = false
         this.userService.getUser(post.userId).subscribe(user => {
           this.user = user
         })

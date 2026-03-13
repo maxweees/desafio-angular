@@ -6,6 +6,9 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card'
 import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field'
+import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-users',
@@ -14,7 +17,11 @@ import { MatFormFieldModule } from '@angular/material/form-field'
     CommonModule,
     MatCardModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatIconModule,
+    MatProgressSpinner
   ],
   templateUrl: './users.html',
   styleUrl: './users.scss',
@@ -23,6 +30,9 @@ export class Users implements OnInit {
 
   users: User[] = []
   filteredUsers: User[] = []
+  searchTerm = ''
+  loading = true
+  
 
   constructor(private userService: UserService){}
 
@@ -32,19 +42,28 @@ export class Users implements OnInit {
 
       this.users = data
       this.filteredUsers = data
+      this.loading = false
 
     })
 
   }
 
-  searchUsers(event: Event){
+  filterUsers(){
 
-    const value = (event.target as HTMLInputElement).value.toLowerCase()
-
+    const term = this.searchTerm.toLowerCase()
+  
+    if(!term){
+      this.filteredUsers = this.users
+      return
+    }
+  
     this.filteredUsers = this.users.filter(user =>
-      user.name.toLowerCase().includes(value)
+      user.name.toLowerCase().includes(term) ||
+      user.email.toLowerCase().includes(term) ||
+      user.company?.name.toLowerCase().includes(term)
     )
-
+  
   }
+  
 
 }

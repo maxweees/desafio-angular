@@ -13,10 +13,13 @@ export const routes: Routes = [
           import('./pages/posts-list/posts-list')
           .then(m => m.PostsList) 
     },
-  { path: 'posts/:id', 
+
+    { 
+      path: 'posts/:id', 
       loadComponent: () =>
-      import('./pages/post-detail/post-detail')
-    .then(m => m.PostDetail) },
+       import('./pages/post-detail/post-detail')
+       .then(m => m.PostDetail) 
+    },
 
     {
       path: 'users',

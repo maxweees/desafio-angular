@@ -1,13 +1,24 @@
 <h2>Usuários</h2>
 
 <mat-form-field appearance="outline" class="search-field">
+  
+  <mat-icon matPrefix>search</mat-icon>
+  
   <mat-label>Buscar usuário</mat-label>
+  
   <input
     matInput
-    (keyup)="searchUsers($event)"
-    placeholder="Digite um nome">
-</mat-form-field>
+    [(ngModel)]="searchTerm"  
+    (input)="filterUsers()">
 
+  </mat-form-field>
+
+  <div class="loading-container" *ngIf="loading">
+
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Carregando Usuários</p>
+
+  </div>
 
 <div class="users-container">
 

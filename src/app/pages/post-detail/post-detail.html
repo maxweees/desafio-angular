@@ -1,6 +1,14 @@
-<div class="detail-container" *ngIf="post">
+<h2>Post Detalhado</h2>
+<div class="detail-container">
 
-  <mat-card class="post-card">
+  <div class="loading-container" *ngIf="loading">
+
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Carregando posts...</p>
+  
+  </div>
+  
+  <mat-card class="post-card"  *ngIf="!loading && post">
 
     <mat-card-header>
 
